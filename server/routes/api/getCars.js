@@ -4,8 +4,7 @@ const router = express.Router();
 const Car = require("../../models/Car");
 
 router.get("/", (req, res) => {
-  Car.find({}).then((err, cars) => {
-
+  Car.find({}).then((cars) => {
     res.send(cars);
   }).catch((error) => {
     return res.send({
