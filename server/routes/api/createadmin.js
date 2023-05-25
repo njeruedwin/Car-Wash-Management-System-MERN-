@@ -24,7 +24,7 @@ router.post("/", (req, res) => {
   }
 
   //make sure that the username does not exist
-  Admin.find({ userName: userName }, (err, admins) => {
+  Admin.find({ userName: userName }).then((err, admins) => {
     if (err) {
       res.send({
         success: false,
