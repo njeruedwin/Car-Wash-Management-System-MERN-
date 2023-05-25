@@ -16,21 +16,20 @@ router.patch("/", (req, res) => {
         carType,
         priceCharged,
       },
-    },
-    (err, car) => {
-      if (err) {
-        return res.send({
-          success: false,
-          message: "Server Error",
-        });
-      }
-
+    }
+  )
+    .then((car) => {
       res.send({
         success: true,
         message: "Car successfuly updated",
       });
-    }
-  );
+    })
+    .catch((err) => {
+      return res.send({
+        success: false,
+        message: "Server Error",
+      });
+    });
 });
 
 module.exports = router;

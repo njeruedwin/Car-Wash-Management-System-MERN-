@@ -8,14 +8,7 @@ router.get("/", (req, res) => {
   const { plateNumber } = query;
 
   Car.find({ plateNumber: plateNumber }).then(
-    (err, cars) => {
-      if (err) {
-        return res.send({
-          success: false,
-          message: "Server Error",
-        });
-      }
-  
+    (cars) => {
       if (cars == 0) {
         return res.send({
           success: false,
@@ -24,6 +17,11 @@ router.get("/", (req, res) => {
       }
   
       res.send(cars);
+    }).then((error) =>  {
+      return res.send({
+        success: false,
+        message: error,
+      });
     });
   
 });
