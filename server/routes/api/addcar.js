@@ -40,19 +40,20 @@ router.post("/", (req, res) => {
     priceCharged,
   });
 
-  newCar.save((err, car) => {
-    if (err) {
+  newCar
+    .save()
+    .then((err, car) => {
+      res.send({
+        success: true,
+        message: "New car saved",
+      });
+    })
+    .catch((err) => {
       return res.send({
         success: false,
         message: "Server Error",
       });
-    }
-
-    res.send({
-      success: true,
-      message: "New car saved",
     });
-  });
 });
 
 module.exports = router;
