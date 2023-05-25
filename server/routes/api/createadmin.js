@@ -25,7 +25,6 @@ router.post("/", (req, res) => {
 
   //make sure that the username does not exist
   Admin.find({ userName: userName }).then((admins) => {
-    
     if (admins != 0) {
       return res.send({
         success: false,
@@ -43,14 +42,12 @@ router.post("/", (req, res) => {
     //encrypt the password
     newAdmin.password = newAdmin.generateHash(password);
 
-    newAdmin.save().then(
-      (err, admin) => {
-        res.send({
-          success: true,
-          message: "New Admin Registered",
-        });
-      }
-    );
+    newAdmin.save().then((err, admin) => {
+      res.send({
+        success: true,
+        message: "New Admin Registered",
+      });
+    });
   });
 });
 
