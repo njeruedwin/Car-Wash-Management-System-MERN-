@@ -34,11 +34,10 @@ app.use("/api/admin/carready", carReadyRoute);
 //connect to the database
 mongoose.connect(
   "mongodb://localhost/carwashsystem",
-  { useUnifiedTopology: true, useNewUrlParser: true },
-  () => {
-    console.log("Successfuly conneted to mongoDB");
-  }
-);
+  { useUnifiedTopology: true, useNewUrlParser: true }
+).then(
+  console.log('Connected Successfully')
+)
 
 //listen to port
 app.listen(5000, () => {
