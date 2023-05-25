@@ -4,15 +4,16 @@ const router = express.Router();
 const Car = require("../../models/Car");
 
 router.delete("/", (req, res) => {
-  Car.deleteOne({ plateNumber: req.query.plateNumber }, (err, doc) => {
-    if (err) {
+  Car.deleteOne({ plateNumber: req.query.plateNumber })
+    .then((doc) => {
+      res.send(doc);
+    })
+    .catch((error) => {
       return res.send({
         success: false,
-        message: "Server Error",
+        message: error,
       });
-    }
-    res.send(doc);
-  });
+    });
 });
 
 module.exports = router;
