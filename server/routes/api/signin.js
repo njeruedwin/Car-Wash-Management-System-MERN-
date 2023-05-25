@@ -61,7 +61,7 @@ router.post("/", (req, res) => {
   
       //save the new user session
   
-      newAdminSession.save((err, session) => {
+      newAdminSession.save().then((err, session) => {
         if (err) {
           return res.send({
             success: false,
