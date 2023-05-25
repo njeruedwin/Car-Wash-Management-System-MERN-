@@ -71,6 +71,19 @@ class Table extends Component {
     });
   };
 
+  componentDidUpdate(prevProp, prevState){
+    if(this.state.updated !== prevProp.updates){
+      console.log("Table component has updated");
+      axios.get("http://localhost:5000/api/admin/getcars").then((res) => {
+        console.log(res)
+        this.state.cars = res.data.map((data) => data);
+        this.setState({
+          cars: res.data,
+        });
+      });
+    }
+  }
+
   registerTable = () => {
     return this.state.cars.map((car) => {
       return (
@@ -383,7 +396,7 @@ class Table extends Component {
     const data = this.state;
     return axios.patch("http://localhost:5000/api/admin/updatecar", data).then(
       this.setState({
-        updated: true,
+        updated: !this.state.updated,
       })
     );
   };
