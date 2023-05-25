@@ -3,17 +3,14 @@
   "version": "1.0.0",
   "description": "react boiler plate",
   "main": "index.js",
-  "engine": {
-    "node": "10.16.0",
-    "npm": "6.9.0"
-  },
+  
   "scripts": {
     "start": "node server/index.js",
     "backend": "nodemon server/index.js",
     "frontend": "npm run start --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
   },
-  "author": "John ahn",
+  "author": "Edwin Njeru",
   "license": "ISC",
   "dependencies": {
     "@material-ui/icons": "^4.9.1",
