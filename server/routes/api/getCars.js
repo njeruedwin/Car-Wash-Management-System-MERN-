@@ -4,15 +4,14 @@ const router = express.Router();
 const Car = require("../../models/Car");
 
 router.get("/", (req, res) => {
-  Car.find({}, (err, cars) => {
-    if (err) {
-      return res.send({
-        success: false,
-        message: "Server Error",
-      });
-    }
+  Car.find({}).then((err, cars) => {
 
     res.send(cars);
+  }).catch((error) => {
+    return res.send({
+      success: false,
+      message: error,
+    });
   });
 });
 

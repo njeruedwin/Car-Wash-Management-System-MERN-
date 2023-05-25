@@ -40,18 +40,16 @@ router.post("/", (req, res) => {
     priceCharged,
   });
 
-  newCar
-    .save()
-    .then((err, car) => {
+  newCar.save().then(
       res.send({
         success: true,
         message: "New car saved",
-      });
-    })
-    .catch((err) => {
+      })
+    )
+    .catch((error) => {
       return res.send({
         success: false,
-        message: "Server Error",
+        message: error,
       });
     });
 });

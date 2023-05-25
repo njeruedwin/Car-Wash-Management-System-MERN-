@@ -12,18 +12,11 @@ router.get("/", (req, res) => {
   const { query } = req;
   const { token } = query;
 
-  AdminSession.find(
-    {
-      _id: token,
-      isValid: true,
-    },
-    (err, session) => {
-      if (err) {
-        return res.send({
-          success: false,
-          message: "Server Error",
-        });
-      }
+  AdminSession.find({
+    _id: token,
+    isValid: true,
+  })
+    .then((session) => {
       if (session == 0) {
         return res.send({
           success: false,
@@ -35,7 +28,12 @@ router.get("/", (req, res) => {
         success: true,
         message: "In Session",
       });
-    }
-  );
+    })
+    .catch((error) => {
+      return res.send({
+        success: false,
+        message: error,
+      });
+    });
 });
 module.exports = router;
