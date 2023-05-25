@@ -20,26 +20,24 @@ router.get("/", (req, res) => {
     {
       $set: { isValid: false },
     },
+).then((session) => {
+  
+  if (session == null) {
+    return res.send({
+      success: false,
+      message: "Session does not exist",
+    });
+  }
 
-    (err, session) => {
-      if (err) {
-        return res.send({
-          success: false,
-          message: "Server Error",
-        });
-      }
-      if (session == null) {
-        return res.send({
-          success: false,
-          message: "Session does not exist",
-        });
-      }
-
-      res.send({
-        success: true,
-        message: "Logged Out",
-      });
-    }
-  );
-});
+  res.send({
+    success: true,
+    message: "Logged Out",
+  });
+}
+).catch((error) => {
+  return res.send({
+    success: false,
+    message: error,
+  });
+}); });
 module.exports = router;
