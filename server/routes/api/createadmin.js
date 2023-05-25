@@ -24,16 +24,10 @@ router.post("/", (req, res) => {
   }
 
   //make sure that the username does not exist
-  Admin.find({ userName: userName }).then((err, admins) => {
-    if (err) {
-      res.send({
-        success: false,
-        message: "Server Error",
-      });
-    }
-
+  Admin.find({ userName: userName }).then((admins) => {
+    
     if (admins != 0) {
-      res.send({
+      return res.send({
         success: false,
         message: "The username already exists",
       });
@@ -49,19 +43,14 @@ router.post("/", (req, res) => {
     //encrypt the password
     newAdmin.password = newAdmin.generateHash(password);
 
-    newAdmin.save((err, admin) => {
-      if (err) {
-        return res.send({
-          success: false,
-          message: "Server Error",
+    newAdmin.save().then(
+      (err, admin) => {
+        res.send({
+          success: true,
+          message: "New Admin Registered",
         });
       }
-
-      res.send({
-        success: true,
-        message: "New Admin Registered",
-      });
-    });
+    );
   });
 });
 
