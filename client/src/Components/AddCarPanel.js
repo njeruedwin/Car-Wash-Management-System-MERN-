@@ -30,7 +30,7 @@ class AddCarPanel extends Component {
 class CarForm extends Component {
   constructor(props) {
     super(props);
-    API = environment.API;
+    this.API = environment.API;
 
     this.state = {
       plateNumber: "",
@@ -58,7 +58,7 @@ class CarForm extends Component {
     const car = this.state;
     console.log(car);
 
-    axios.post(`${API}/admin/addcar`, car).then((res) => {
+    axios.post(`${this.API}/admin/addcar`, car).then((res) => {
       if (!res.data.success) {
         return this.setState({
           errorMessage: res.data.message,

@@ -9,7 +9,7 @@ import {environment} from '../environment/environment.prod'
 class SignIn extends Component {
   constructor(props) {
     super(props);
-    API = environment.API;
+    this.API = environment.API;
 
     this.state = {
       userName: "",
@@ -46,7 +46,7 @@ class SignIn extends Component {
       password,
     };
 
-    axios.post(`${API}/api/admin/signIn`, data).then((res) => {
+    axios.post(`${this.API}/this.API/admin/signIn`, data).then((res) => {
       console.log(res)
       const { success, message, token } = res.data;
       if (!success) {

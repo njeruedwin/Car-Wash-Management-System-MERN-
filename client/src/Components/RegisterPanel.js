@@ -30,7 +30,7 @@ class Table extends Component {
   constructor() {
     super();
 
-    API = environment.API;
+    this.API = environment.API;
 
     this.state = {
       deleteButtonClicked: false,
@@ -62,7 +62,7 @@ class Table extends Component {
 
   componentDidMount = () => {
     console.log("Table component has mounted");
-    axios.get(`${API}/api/admin/getcars`).then((res) => {
+    axios.get(`${this.API}/this.API/admin/getcars`).then((res) => {
       console.log(res)
      
       this.setState({
@@ -74,7 +74,7 @@ class Table extends Component {
   componentDidUpdate(prevProp, prevState){
     if(this.state.updated !== prevProp.updates){
       console.log("Table component has updated");
-      axios.get(`${API}/admin/getcars`).then((res) => {
+      axios.get(`${this.API}/admin/getcars`).then((res) => {
         console.log(res)
        
         this.setState({
@@ -338,7 +338,7 @@ class Table extends Component {
   setTableToDelete = (plateNumber) => {
     axios
       .get(
-        `${API}/getspecificcar?plateNumber=` + plateNumber
+        `${this.API}/getspecificcar?plateNumber=` + plateNumber
       )
       .then((res) => {
         this.setState({
@@ -351,7 +351,7 @@ class Table extends Component {
   setDataToUpdate = (plateNumber) => {
     axios
       .get(
-        `${API}/getspecificcar?plateNumber=` + plateNumber
+        `${this.API}/getspecificcar?plateNumber=` + plateNumber
       )
       .then((res) => {
         res.data.map((car) => {
@@ -381,7 +381,7 @@ class Table extends Component {
   deleteRecord = (plateNumber) => {
     axios
       .delete(
-        `${API}/admin/deletecar?plateNumber=` + plateNumber
+        `${this.API}/admin/deletecar?plateNumber=` + plateNumber
       )
       .then(
         this.setState({
@@ -394,7 +394,7 @@ class Table extends Component {
 
   updateRecord = () => {
     const data = this.state;
-    return axios.patch(`${API}/admin/updatecar`, data).then(
+    return axios.patch(`${this.API}/admin/updatecar`, data).then(
       this.setState({
         updated: !this.state.updated,
       })
@@ -404,7 +404,7 @@ class Table extends Component {
   carReady = (plateNumber) => {
     return axios
       .patch(
-        `${API}/admin/carready?plateNumber=` + plateNumber
+        `${this.API}/admin/carready?plateNumber=` + plateNumber
       )
       .then((res) => {
         console.log(res);
@@ -414,7 +414,7 @@ class Table extends Component {
 
   render() {
     if (this.state.updated === true) {
-      axios.get(`${API}/admin/getcars`).then((res) => {
+      axios.get(`${this.API}/admin/getcars`).then((res) => {
       
         this.setState({
           cars: res.data,

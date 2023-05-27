@@ -40,7 +40,7 @@ export class CheckCar extends Component {
 class CheckCarContent extends Component {
   constructor() {
     super();
-    API = environment.API;
+    this.API = environment.API;
 
     this.state = {
       carReady: false,
@@ -66,7 +66,7 @@ class CheckCarContent extends Component {
     console.log(this.state.plateNumber);
     axios
       .get(
-        `${API}/getspecificcar?plateNumber=` +
+        `${this.API}/getspecificcar?plateNumber=` +
           this.state.plateNumber
       )
       .then((res) => {

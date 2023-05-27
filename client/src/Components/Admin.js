@@ -10,8 +10,8 @@ import {environment} from '../environment/environment.prod'
 class Admin extends Component {
   constructor(props) {
     super(props);
-    API = environment.API;
-    
+    this.API = environment.API;
+
     this.state = {
       logOut: false,
       signedIn: true,
@@ -30,7 +30,7 @@ class Admin extends Component {
       //verify the token
       console.log(token);
       axios
-        .get(`${API}/admin/verify?token=` + token)
+        .get(`${this.API}/admin/verify?token=` + token)
         .then((res) => {
           if (!res.data.success) {
             this.setState({
@@ -54,7 +54,7 @@ class Admin extends Component {
     const obj = getFromStorage("Parcel_app");
     const { token } = obj;
     axios
-      .get(`${API}/admin/logout?token=` + token)
+      .get(`${this.API}/admin/logout?token=` + token)
       .then((res) => {
         if (res.data.success) {
           this.setState({
