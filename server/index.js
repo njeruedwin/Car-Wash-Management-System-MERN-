@@ -37,7 +37,7 @@ mongoose.connect(
   { useUnifiedTopology: true, useNewUrlParser: true }
 ).then(
   console.log('Connected Successfully')
-)
+).catch(error => console.log(error))
 
 //listen to port
 app.listen(5000, () => {
