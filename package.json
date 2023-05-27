@@ -4,8 +4,8 @@
   "description": "Car Wash Management System",
   "main": "index.js",
   "scripts": {
-    "start": "cd ./server && node index.js",
-    "backend": "nodemon server/index.js",
+    "start": "node index.js",
+    "backend": "nodemon index.js",
     "frontend": "npm run start --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
   },

@@ -3,24 +3,25 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
+const path = require("path");
 
 require('dotenv').config()
-const {MONGODB_URI} = require('../config') //get access to the mongoDB
+const {MONGODB_URI} = require('./config') //get access to the mongoDB
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 //import routes
-const signInRoute = require("./routes/api/signin");
-const createAdminRoute = require("./routes/api/createadmin");
-const verifyRoute = require("./routes/api/verify");
-const logOutRoute = require("./routes/api/logout");
-const addCarRoute = require("./routes/api/addcar");
-const getSpecificCar = require("./routes/api/getspecificcar");
-const updateCarRoute = require("./routes/api/updatecar");
-const deleteCarRoute = require("./routes/api/deletecar");
-const getCarsRoute = require("./routes/api/getcars");
-const carReadyRoute = require("./routes/api/carready");
+const signInRoute = require("./server/routes/api/signin");
+const createAdminRoute = require("./server/routes/api/createadmin");
+const verifyRoute = require("./server/routes/api/verify");
+const logOutRoute = require("./server/routes/api/logout");
+const addCarRoute = require("./server/routes/api/addcar");
+const getSpecificCar = require("./server/routes/api/getspecificcar");
+const updateCarRoute = require("./server/routes/api/updatecar");
+const deleteCarRoute = require("./server/routes/api/deletecar");
+const getCarsRoute = require("./server/routes/api/getcars");
+const carReadyRoute = require("./server/routes/api/carready");
 const { verify } = require("jsonwebtoken");
 
 //set routes
@@ -34,6 +35,18 @@ app.use("/api/admin/updatecar", updateCarRoute);
 app.use("/api/admin/deletecar", deleteCarRoute);
 app.use("/api/admin/getcars", getCarsRoute);
 app.use("/api/admin/carready", carReadyRoute);
+
+
+ // add middleware
+// serve up production assets
+app.use(express.static('client/build'));
+// let the react app to handle any unknown routes 
+// serve up the index.html if express does'nt recognize the route
+
+app.get('*', (req, res) => {
+res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+});
+
 
 //connect to the database
 mongoose.connect(
