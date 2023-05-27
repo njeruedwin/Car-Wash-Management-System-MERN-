@@ -4,6 +4,8 @@ import { Redirect } from "react-router-dom";
 import "../css/admin.css";
 import axios from "axios";
 
+import {API} from '../../environment/environment.prod'
+
 class AddCarPanel extends Component {
   render() {
     return (
@@ -55,7 +57,7 @@ class CarForm extends Component {
     const car = this.state;
     console.log(car);
 
-    axios.post("http://localhost:5000/api/admin/addcar", car).then((res) => {
+    axios.post(`${API}/admin/addcar`, car).then((res) => {
       if (!res.data.success) {
         return this.setState({
           errorMessage: res.data.message,

@@ -4,6 +4,8 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { setInStorage } from "../utils/storage";
 
+import {API} from '../../environment/environment.prod'
+
 class SignIn extends Component {
   constructor(props) {
     super(props);
@@ -43,7 +45,7 @@ class SignIn extends Component {
       password,
     };
 
-    axios.post("http://localhost:5000/api/admin/signIn", data).then((res) => {
+    axios.post(`${API}/api/admin/signIn`, data).then((res) => {
       console.log(res)
       const { success, message, token } = res.data;
       if (!success) {

@@ -4,6 +4,8 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { getFromStorage } from "../utils/storage";
 
+import {API} from '../../environment/environment.prod'
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +27,7 @@ class App extends Component {
       //verify the token
       console.log(token);
       axios
-        .get("http://localhost:5000/api/admin/verify?token=" + token)
+        .get(`${API}/admin/verify?token=` + token)
         .then((res) => {
           if (res.data.success) {
             this.setState({

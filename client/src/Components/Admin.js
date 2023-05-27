@@ -5,6 +5,8 @@ import axios from "axios";
 import { getFromStorage } from "../utils/storage";
 import RegisterPanel from "../Components/RegisterPanel";
 
+import {API} from '../../environment/environment.prod'
+
 class Admin extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +28,7 @@ class Admin extends Component {
       //verify the token
       console.log(token);
       axios
-        .get("http://localhost:5000/api/admin/verify?token=" + token)
+        .get(`${API}/admin/verify?token=` + token)
         .then((res) => {
           if (!res.data.success) {
             this.setState({
@@ -50,7 +52,7 @@ class Admin extends Component {
     const obj = getFromStorage("Parcel_app");
     const { token } = obj;
     axios
-      .get("http://localhost:5000/api/admin/logout?token=" + token)
+      .get(`${API}/admin/logout?token=` + token)
       .then((res) => {
         if (res.data.success) {
           this.setState({

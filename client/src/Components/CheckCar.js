@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+import {API} from '../../environment/environment.prod'
+
 export class CheckCar extends Component {
   render() {
     return (
@@ -63,7 +65,7 @@ class CheckCarContent extends Component {
     console.log(this.state.plateNumber);
     axios
       .get(
-        "http://localhost:5000/api/getspecificcar?plateNumber=" +
+        `${API}/getspecificcar?plateNumber=` +
           this.state.plateNumber
       )
       .then((res) => {
