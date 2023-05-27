@@ -62,7 +62,7 @@ class Table extends Component {
 
   componentDidMount = () => {
     console.log("Table component has mounted");
-    axios.get(`${this.API}/this.API/admin/getcars`).then((res) => {
+    axios.get(`${this.API}/admin/getcars`).then((res) => {
       console.log(res)
      
       this.setState({
