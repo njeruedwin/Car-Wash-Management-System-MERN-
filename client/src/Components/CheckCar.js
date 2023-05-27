@@ -1,4 +1,3 @@
-import Axios from "axios";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -69,17 +68,17 @@ class CheckCarContent extends Component {
       )
       .then((res) => {
         console.log(res.data);
-        if (res.data.success == false) {
+        if (res.data.success === false) {
           return this.setState({
             message: "You Do Not Have A Car at Jirani Car Wash",
           });
         }
-        if (res.data[0].ready == "") {
+        if (res.data[0].ready === "") {
           return this.setState({
             message: "Car not ready",
           });
         }
-        if (res.data[0].ready == "ready") {
+        if (res.data[0].ready === "ready") {
           return this.setState({
             message: "Your Car Is Ready For Pick-Up",
           });
@@ -110,7 +109,7 @@ class CheckCarContent extends Component {
           <h3 className="panel-title">Check Your Car</h3>
         </div>
         <div className="panel-body">
-          <form role="form">
+          <div role="form">
             <div class="form-group">
               <input
                 type="text"
@@ -127,7 +126,7 @@ class CheckCarContent extends Component {
                 Enter your car plate number for results:Use lower case
               </span>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     );

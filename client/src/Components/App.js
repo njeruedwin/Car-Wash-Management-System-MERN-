@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import SignIn from "./SignIn";
 import CustomerPage from "./CustomerPage";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
@@ -47,7 +46,7 @@ class App extends Component {
   }
 
   render() {
-    const { isLoading, signedIn } = this.state;
+    const { signedIn } = this.state;
 
     return signedIn ? <Redirect to="/admin" /> : <CustomerPage />;
   }

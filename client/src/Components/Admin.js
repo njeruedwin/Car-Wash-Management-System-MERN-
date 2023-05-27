@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../css/admin.css";
-import { Link, Redirect } from "react-router-dom";
-import SignIn from "./SignIn";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { getFromStorage } from "../utils/storage";
 import RegisterPanel from "../Components/RegisterPanel";

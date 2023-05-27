@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "../css/navbar.css";
 
 class Navbar extends Component {
@@ -7,7 +6,7 @@ class Navbar extends Component {
     return (
       <nav class="navbar navbar-inverse" role="navigation">
         <div class="navbar-header">
-          <a class="navbar-brand ">Jirani Car Wash Management System</a>
+          <span class="navbar-brand">Jirani Car Wash Management System</span>
           {/*  */}
         </div>
       </nav>

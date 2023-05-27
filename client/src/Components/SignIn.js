@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../css/signIn.css";
-import Admin from "./Admin";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { setInStorage } from "../utils/storage";
@@ -64,7 +63,7 @@ class SignIn extends Component {
   }
 
   render() {
-    const { password, signedIn, signInError } = this.state;
+    const { signedIn, signInError } = this.state;
     if (signedIn) {
       //remainder:change signedUp state back to false
       return <Redirect to="/admin" />;
@@ -74,7 +73,7 @@ class SignIn extends Component {
         <div>
           <div className="col-md-4"></div>
           <div className="col-md-4">
-            <form className="my-form form-horizontal" role="form">
+            <div className="my-form form-horizontal" role="form">
               <div className="form-group">
                 <label for="firstname" className="control-label">
                   username
@@ -118,7 +117,7 @@ class SignIn extends Component {
                   </button>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
           <div className="col-md-4"></div>
         </div>

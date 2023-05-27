@@ -6,7 +6,6 @@ import App from "./Components/App";
 import SignIn from "./Components/SignIn";
 import RegisterAdmin from "./Components/RegisterAdmin";
 import AddCarPanel from "./Components/AddCarPanel";
-import Search from "./Components/Search";
 import Admin from "./Components/Admin";
 import CheckCar from "./Components/CheckCar";
 

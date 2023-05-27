@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import { render } from "react-dom";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PanelNavbar from "../Components/PanelNavbar";
 import axios from "axios";
 
 class RegisterPanel extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
@@ -64,7 +60,7 @@ class Table extends Component {
     console.log("Table component has mounted");
     axios.get("http://localhost:5000/api/admin/getcars").then((res) => {
       console.log(res)
-      this.state.cars = res.data.map((data) => data);
+     
       this.setState({
         cars: res.data,
       });
@@ -76,7 +72,7 @@ class Table extends Component {
       console.log("Table component has updated");
       axios.get("http://localhost:5000/api/admin/getcars").then((res) => {
         console.log(res)
-        this.state.cars = res.data.map((data) => data);
+       
         this.setState({
           cars: res.data,
         });
@@ -246,7 +242,7 @@ class Table extends Component {
               </div>
               <div class="modal-body ">
                 <div>
-                  <form class="bs-example bs-example-form" role="form">
+                  <div class="bs-example bs-example-form" role="form">
                     <div class="input-group">
                       <div class="alert alert-info">
                         <button
@@ -302,7 +298,7 @@ class Table extends Component {
                     </div>
                     <br />
                     <div className="input-group"></div>
-                  </form>
+                  </div>
                 </div>
                 <div class="modal-footer">
                   <button
@@ -355,7 +351,7 @@ class Table extends Component {
       )
       .then((res) => {
         res.data.map((car) => {
-          this.setState({
+         return this.setState({
             carType: car.carType,
             carOwner: car.carOwner,
             plateNumber: car.plateNumber,
@@ -413,9 +409,9 @@ class Table extends Component {
   };
 
   render() {
-    if (this.state.updated == true) {
+    if (this.state.updated === true) {
       axios.get("http://localhost:5000/api/admin/getcars").then((res) => {
-        this.state.cars = res.data.map((data) => data);
+      
         this.setState({
           cars: res.data,
           updated: false,

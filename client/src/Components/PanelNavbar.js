@@ -9,19 +9,19 @@ class PanelNavbar extends Component {
           <ul class="nav navbar-nav">
             <li>
               <Link to="/admin">
-                <a style={{ textDecoration: "none" }}>Register Panel</a>
+                <span style={{ textDecoration: "none" }}>Register Panel</span>
               </Link>
             </li>
 
             <li>
-              <a href="#"></a>
+              <span ></span>
             </li>
 
             <li>
               <Link to="/addcar">
-                <a href="#" style={{ textDecoration: "none" }}>
+                <span style={{ textDecoration: "none" }}>
                   Add Car Panel
-                </a>
+                </span>
               </Link>
             </li>
           </ul>
