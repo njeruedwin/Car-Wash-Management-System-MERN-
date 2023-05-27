@@ -4,12 +4,12 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { getFromStorage } from "../utils/storage";
 
-import {API} from '../environment/environment.prod'
+import {environment} from '../environment/environment.prod'
 
 class App extends Component {
   constructor(props) {
     super(props);
-
+    API = environment.API;
     this.state = {
       signedIn: false,
       isLoading: true,

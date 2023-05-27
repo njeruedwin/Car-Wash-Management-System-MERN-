@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import "../css/admin.css";
 import axios from "axios";
 
-import {API} from '../environment/environment.prod'
+import {environment} from '../environment/environment.prod'
 
 class AddCarPanel extends Component {
   render() {
@@ -30,6 +30,7 @@ class AddCarPanel extends Component {
 class CarForm extends Component {
   constructor(props) {
     super(props);
+    API = environment.API;
 
     this.state = {
       plateNumber: "",

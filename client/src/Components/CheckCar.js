@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import {API} from '../environment/environment.prod'
+import {environment} from '../environment/environment.prod'
 
 export class CheckCar extends Component {
   render() {
@@ -40,6 +40,7 @@ export class CheckCar extends Component {
 class CheckCarContent extends Component {
   constructor() {
     super();
+    API = environment.API;
 
     this.state = {
       carReady: false,

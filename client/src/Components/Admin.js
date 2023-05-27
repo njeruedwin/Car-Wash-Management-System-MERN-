@@ -5,11 +5,13 @@ import axios from "axios";
 import { getFromStorage } from "../utils/storage";
 import RegisterPanel from "../Components/RegisterPanel";
 
-import {API} from '../environment/environment.prod'
+import {environment} from '../environment/environment.prod'
 
 class Admin extends Component {
   constructor(props) {
     super(props);
+    API = environment.API;
+    
     this.state = {
       logOut: false,
       signedIn: true,

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PanelNavbar from "../Components/PanelNavbar";
 import axios from "axios";
 
-import {API} from '../environment/environment.prod'
+import {environment} from '../environment/environment.prod'
 
 class RegisterPanel extends Component {
 
@@ -29,6 +29,8 @@ class RegisterPanel extends Component {
 class Table extends Component {
   constructor() {
     super();
+
+    API = environment.API;
 
     this.state = {
       deleteButtonClicked: false,
