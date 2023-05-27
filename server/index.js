@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
+
+require('dotenv').config()
+const {MONGODB_URI} = require('../config') //get access to the mongoDB
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -33,7 +37,7 @@ app.use("/api/admin/carready", carReadyRoute);
 
 //connect to the database
 mongoose.connect(
-  "mongodb://localhost/carwashsystem",
+  MONGODB_URI,
   { useUnifiedTopology: true, useNewUrlParser: true }
 ).then(
   console.log('Connected Successfully')

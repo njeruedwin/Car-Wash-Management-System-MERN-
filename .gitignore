@@ -2,6 +2,7 @@
 /build
 
 dev.js
+.env
 
 
 
