@@ -46,7 +46,7 @@ class SignIn extends Component {
       password,
     };
 
-    axios.post(`${this.API}/this.API/admin/signIn`, data).then((res) => {
+    axios.post(`${this.API}/admin/signIn`, data).then((res) => {
       console.log(res)
       const { success, message, token } = res.data;
       if (!success) {
