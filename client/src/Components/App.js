@@ -9,7 +9,7 @@ import {environment} from '../environment/environment.prod'
 class App extends Component {
   constructor(props) {
     super(props);
-    API = environment.API;
+    this.API = environment.API;
     this.state = {
       signedIn: false,
       isLoading: true,
@@ -27,7 +27,7 @@ class App extends Component {
       //verify the token
       console.log(token);
       axios
-        .get(`${API}/admin/verify?token=` + token)
+        .get(`${this.API}/admin/verify?token=` + token)
         .then((res) => {
           if (res.data.success) {
             this.setState({
