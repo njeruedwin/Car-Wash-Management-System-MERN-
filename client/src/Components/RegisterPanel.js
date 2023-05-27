@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PanelNavbar from "../Components/PanelNavbar";
 import axios from "axios";
 
-import {API} from '../../environment/environment.prod'
+import {API} from '../environment/environment.prod'
 
 class RegisterPanel extends Component {
 

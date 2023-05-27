@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 import { getFromStorage } from "../utils/storage";
 
-import {API} from '../../environment/environment.prod'
+import {API} from '../environment/environment.prod'
 
 class App extends Component {
   constructor(props) {

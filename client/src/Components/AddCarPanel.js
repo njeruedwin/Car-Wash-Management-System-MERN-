@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import "../css/admin.css";
 import axios from "axios";
 
-import {API} from '../../environment/environment.prod'
+import {API} from '../environment/environment.prod'
 
 class AddCarPanel extends Component {
   render() {

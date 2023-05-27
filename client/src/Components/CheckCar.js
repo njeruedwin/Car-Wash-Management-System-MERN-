@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import {API} from '../../environment/environment.prod'
+import {API} from '../environment/environment.prod'
 
 export class CheckCar extends Component {
   render() {

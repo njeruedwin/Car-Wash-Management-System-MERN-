@@ -4,7 +4,7 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { setInStorage } from "../utils/storage";
 
-import {API} from '../../environment/environment.prod'
+import {API} from '../environment/environment.prod'
 
 class SignIn extends Component {
   constructor(props) {

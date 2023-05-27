@@ -5,7 +5,7 @@ import axios from "axios";
 import { getFromStorage } from "../utils/storage";
 import RegisterPanel from "../Components/RegisterPanel";
 
-import {API} from '../../environment/environment.prod'
+import {API} from '../environment/environment.prod'
 
 class Admin extends Component {
   constructor(props) {
