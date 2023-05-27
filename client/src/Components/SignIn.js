@@ -76,6 +76,7 @@ class SignIn extends Component {
         <div>
           <div className="col-md-4"></div>
           <div className="col-md-4">
+          <div class="alert alert-info ">username : Admin && Password : 1234 </div>
             <div className="my-form form-horizontal" role="form">
               <div className="form-group">
                 <label for="firstname" className="control-label">
